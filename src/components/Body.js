@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
 
+function filterData(searchInput, restaurants) {
+  return restaurants.filter((restaurant) =>
+    restaurant?.data?.name?.toLoweCase()?.includes(searchInput.toLoweCase())
+  );
+}
 const Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
+  const [fillteredRestaurants, setFillteredRestaurants] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     getRestaurants();
@@ -14,6 +21,7 @@ const Body = () => {
     );
     const json = await data.json();
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setFillteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
 
   return (
@@ -23,12 +31,26 @@ const Body = () => {
           type="search"
           className="search-input"
           placeholder="Search"
-        ></input>
-        <button search="search-btn">Submit</button>
+          value={searchInput}
+          onChange={(e) => {
+            setSearchInput(e.target.value);
+          }}
+        />
+        <button
+          search="search-btn"
+          onClick={() => {
+            const data = filterData(searchInput, allRestaurants);
+            setFillteredRestaurants(data);
+          }}
+        >
+          Search
+        </button>
       </div>
       <div className="restaurant-list">
         {allRestaurants.map((restaurant) => {
-          <RestaurantCard {...restaurant.data} key={restaurant.data.id} />;
+          return (
+            <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
+          );
         })}
       </div>
     </>

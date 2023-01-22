@@ -26,3 +26,22 @@
 .search-input{
     margin-right: 10px;
 }
+
+.card{
+    width: 250px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+
+.card > img{
+    width: 100%;
+}
+
+.card > h3 {
+    word-wrap: break-word;
+}
+.restaurant-list{
+    display: flex;
+    flex-wrap: wrap;
+}
