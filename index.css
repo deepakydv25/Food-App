@@ -17,3 +17,12 @@
 .logo{
     width: 100px;
 }
+
+.search-container{
+    padding: 10px;
+    margin: 10px;
+}
+
+.search-input{
+    margin-right: 10px;
+}
