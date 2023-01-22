@@ -3,7 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 
 function filterData(searchInput, restaurants) {
   return restaurants.filter((restaurant) =>
-    restaurant?.data?.name?.toLoweCase()?.includes(searchInput.toLoweCase())
+    restaurant?.data?.name?.toLowerCase()?.includes(searchInput.toLowerCase())
   );
 }
 const Body = () => {
@@ -47,7 +47,7 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant-list">
-        {allRestaurants.map((restaurant) => {
+        {fillteredRestaurants.map((restaurant) => {
           return (
             <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
           );
