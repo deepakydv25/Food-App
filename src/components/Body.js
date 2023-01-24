@@ -54,6 +54,7 @@ const Body = () => {
         {fillteredRestaurants.map((restaurant) => {
           return (
             <Link
+              className="restaurant-card-link"
               to={"/restaurant/" + restaurant.data.id}
               key={restaurant.data.id}
             >
