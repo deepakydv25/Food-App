@@ -40,10 +40,10 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      {
-        path: "/signIn",
-        element: <SignupForm />,
-      },
+      // {
+      //   path: "/signIn",
+      //   element: <SignupForm />,
+      // },
       {
         path: "/cart",
         element: <Cart />,
