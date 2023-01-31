@@ -9,14 +9,13 @@
 
 .header{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     /* background: red; */
     height: 7rem;
 }
 
 .logo {
     height: 57%;
-    padding-left: 144px;
     padding-top: 1.5rem;
 }
 
@@ -24,7 +23,6 @@
     list-style-type: none;
     display: flex;
     justify-content: space-between;
-    padding-right: 10rem;
 }
 
 .nav-items > ul > li{
@@ -200,4 +198,14 @@
 .card >ul{
     display: flex;
     justify-content: space-between;
+}
+
+.form{
+    background-color: green;
+}
+
+.isOnline {
+    margin-top: 45px;
+    margin-right: 50px;
+    font-size: x-large;
 }
