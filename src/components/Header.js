@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../assets/img/foodvilla.png";
 import { Link } from "react-router-dom";
-import SignupForm from "./SignUpForm";
+// import SignupForm from "./SignUpForm";
 import useOnline from "../utils/useOnline";
 
 const Title = () => (
