@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL, NON_VEG_IMG, VEG_IMG } from "../config";
 import useRestaurant from "../utils/useRestaurant";
