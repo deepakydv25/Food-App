@@ -8,9 +8,9 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu";
-// import SignIn from "./components/SignIn";
 import Cart from "./components/Cart";
-// import SignupForm from "./components/SignUpForm";
+import SignInForm from "./components/SignInForm";
+import DummySignIn from "./components/DummySignIn";
 
 const AppLayout = () => {
   return (
@@ -40,10 +40,10 @@ const appRouter = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
-      // {
-      //   path: "/signIn",
-      //   element: <SignupForm />,
-      // },
+      {
+        path: "/signIn",
+        element: <SignInForm />,
+      },
       {
         path: "/cart",
         element: <Cart />,
