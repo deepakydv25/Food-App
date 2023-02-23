@@ -23,9 +23,9 @@ const Header = () => {
       <div className="m-0 p-0">
         <div className="relative max-w-[1200px] min-w-[1200px] my-0 mx-auto h-[80px] flex items-center">
           <Title />
-          <div className="relative flex items-center ml-[30px] max-w-[300px] h-[30px] mb-[1px] pr-[10px]">
+          {/* <div className="relative flex items-center ml-[30px] max-w-[300px] h-[30px] mb-[1px] pr-[10px]">
             <span>Location : Thane</span>
-          </div>
+          </div> */}
           <div className="flex-1 h-[80px]">
             <ul className="flex flex-row-reverse items-center min-w-0 h-full">
               <li className="mr-0 text-[rgb(61,65,82)] text-base font-medium hover:text-orange">
@@ -65,7 +65,7 @@ const Header = () => {
                 <Link to="/about">About</Link>
               </li>
               <li className="mr-[60px] text-[rgb(61,65,82)] text-base font-medium hover:text-orange">
-                <Link to="/home">Home</Link>
+                <Link to="/">Home</Link>
               </li>
             </ul>
           </div>

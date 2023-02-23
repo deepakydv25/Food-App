@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL, NON_VEG_IMG, VEG_IMG } from "../config";
 import useRestaurant from "../utils/useRestaurant";
-import Shimmer from "./Shimmer";
+import Shimmer, { MenuShimmer } from "./Shimmer";
 
 const RestaurantMenu = () => {
   const { resId } = useParams();
@@ -10,7 +10,7 @@ const RestaurantMenu = () => {
   const restaurant = useRestaurant(resId);
 
   return !restaurant ? (
-    <Shimmer />
+    <MenuShimmer />
   ) : (
     <div>
       <div className="bg-[rgb(24,23,23)] px-5 text-white flex h-[245px]">
@@ -21,19 +21,57 @@ const RestaurantMenu = () => {
               src={IMG_CDN_URL + restaurant?.cloudinaryImageId}
             />
           </div>
-          {/* <h1>Restuarant Id: {resId}</h1> */}
+
           <ul>
-            <h1 className="text-2xl mb-2">{restaurant?.name}</h1>
-            <div className="flex text-[rgb(171,167,167)]">
+            <h1 className="text-[32px]">{restaurant?.name}</h1>
+            <span className=" px-1 text-[rgb(171,167,167)]">
+              {restaurant?.cuisines.join(", ")}
+            </span>
+            <div className="flex text-[rgb(171,167,167)] mt-1">
               <h3 className="px-1">{restaurant?.locality}, </h3>
               <h3 className="px-1">{restaurant?.area}, </h3>
               <h3 className="px-1">{restaurant?.city}</h3>
             </div>
-            <div className="flex  text-[rgb(171,167,167)] mt-3">
-              <h3 className="px-2">{restaurant?.avgRating} stars</h3>
-              <h3 className="px-2">{restaurant?.costForTwoMsg}</h3>
+            <div className="flex  text-[rgb(171,167,167)] mt-7">
+              <div className="flex flex-col mr-7  pr-5 border-r-[1px]">
+                <span className="font-bold text-white">
+                  * {restaurant?.avgRatingString}
+                </span>
+                <span className="text-[12px]">
+                  {restaurant?.totalRatingsString}
+                </span>
+              </div>
+              <div className="flex flex-col mr-7 pr-5 border-r-[1px]">
+                <span className="font-bold text-white">
+                  {restaurant?.sla?.slaString}
+                </span>
+                <span className="text-[12px]">Delivery Time</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-bold text-white">
+                  {restaurant?.costForTwoMsg}
+                </span>
+                <span className="text-[12px]">Cost for two</span>
+              </div>
             </div>
           </ul>
+        </div>
+        <div className="mt-[50px] ml-[10px]">
+          <div className="">
+            <span className=" bg-[rgb(24,23,23)] absolute border border-[rgb(24,23,23)] w-[80px] font-bold text-[20px] pb-1">
+              OFFER
+            </span>
+            <div className="pl-2 pt-[15px]">
+              <div className="border w-[298px] h-[150px] pl-1">
+                <div className="flex flex-col p-7">
+                  <span className="text-white">FREE DELIVERY</span>
+                  <span className="text-white">
+                    20% off up to ₹120 | Use FEDERALCC Above ₹249
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -42,7 +80,7 @@ const RestaurantMenu = () => {
         <ul>
           {Object.values(restaurant?.menu?.items).map((item) => (
             <div className="" key={item?.id}>
-              <div className="mx-[300px] flex border-[2px] border-slate-500 bg-white py-[12px] mb-[12px] justify-between">
+              <div className="mx-[300px] flex border-b-2 bg-white py-[12px] mb-[12px] justify-between">
                 <div className="mx-5">
                   <li className="text-[12px]">
                     <div className="w-9">

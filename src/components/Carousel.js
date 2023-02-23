@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { CAROUSEL_IMG_URL, SWIGGY_URL } from "../config";
+import { CarouselShimmer } from "./Shimmer";
 
 const Carousel = () => {
   const [carouselRestaurant, setCarouselRestaurant] = useState([]);

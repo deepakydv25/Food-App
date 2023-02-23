@@ -20,20 +20,19 @@ const Body = () => {
     const json = await data.json();
     setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     setFillteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    // console.log(json?.data?.cards[2]?.data?.data?.cards);
   }
 
-  return allRestaurants?.length === 0 ? (
-    <Shimmer />
-  ) : (
+  return (
     <>
       <div>
         <Carousel />
       </div>
       <div className="shadow-lg pb-1">
-        <div className="pl-2 my-5 mx-[144px] flex justify-center">
+        <div className="pl-2 my-5 mx-[144px] flex justify-center items-center">
           <input
-            type="search"
-            className="placeholder:italic bg-white border border-slate-300 rounded-full py-1 pl-9 pr-[300px] shadow-sm focus:outline-none focus:border-orange focus:ring-orange focus:ring-1"
+            type="text"
+            className="placeholder:italic bg-white border border-slate-300 rounded-full py-1 pl-5 pr-[300px] shadow-sm focus:outline-none focus:border-orange focus:ring-orange focus:ring-1"
             placeholder="Search Restaurant..."
             value={searchInput}
             onChange={(e) => {
@@ -52,20 +51,24 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-wrap py-4 mx-[144px]">
-        {fillteredRestaurants.map((restaurant) => {
-          return (
-            <div className="m-5">
-              <Link
-                to={"/restaurant/" + restaurant.data.id}
-                key={restaurant.data.id}
-              >
-                <RestaurantCard {...restaurant.data} />
-              </Link>
-            </div>
-          );
-        })}
-      </div>
+      {allRestaurants.length === 0 ? (
+        <Shimmer />
+      ) : (
+        <div className="flex flex-wrap py-4 mx-[144px]">
+          {fillteredRestaurants.map((restaurant) => {
+            return (
+              <div className="m-5">
+                <Link
+                  to={"/restaurant/" + restaurant?.data?.id}
+                  key={restaurant?.data?.id}
+                >
+                  <RestaurantCard {...restaurant?.data} />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 };
